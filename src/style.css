@@ -4,5 +4,114 @@
 
 body {
     margin: 0;
+    background-color: #E5E5E5;
+    font-family: 'Karla';
 }
 
+main {
+    display: flex;
+    width: 512px;
+    height: 512px;
+    background-color: white;
+    margin: auto;
+}
+
+.game-border {
+    position: relative;
+    display: flex;
+    width: 360px;
+    height: 380px;
+    background-color: #0B2434;
+    margin: auto;
+    align-self: center;
+}
+
+.game-board {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    background-color: #F5F5F5;
+    margin: 30px 20px;
+    border-radius: 10px;
+}
+
+.game-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.game-header > h1 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25.5px;
+    line-height: 30px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.03em;
+    margin-top: 33px;
+    margin-bottom: 0;
+}
+
+.game-header > h3 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13.1072px;
+    line-height: 16px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.03em;
+    margin-top: 0;
+    margin-bottom: 33px;
+}
+
+.game-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.dies {
+    width: 250px;
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+}
+
+.die {
+    min-width: 36px;
+    height: 36px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    display: flex;
+}
+
+.row-1 {
+    margin-bottom: 18.5px;
+}
+.row-2 {
+    margin-bottom: 25.5px;
+}
+
+.die > p {
+    text-align: center;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20.5px;
+    line-height: 24px;
+    margin: auto;
+}
+
+.roll-btn {
+    width: 92px;
+    height: 35px;
+    background: #5035FF;
+    box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
+    border-radius: 3.81277px;
+    color: white;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16.384px;
+    line-height: 19px;
+    margin: auto;
+}
