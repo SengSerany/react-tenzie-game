@@ -11,8 +11,9 @@ export default function App() {
     const diesValue = () =>{
         const valueNb = 10;
         const arrayDiesValue = []
+        const count = 0;
         for (let i = 0; i < valueNb ; i++) {
-            arrayDiesValue.push(randomNumber())
+            arrayDiesValue.push({value: randomNumber(), isHeld: false, id: count + i})
         }
         return arrayDiesValue;
     }
@@ -23,6 +24,14 @@ export default function App() {
         return setDiceValues(diesValue())
     }
 
+    const isLocking = (currentId) => {
+        setDiceValues( prevArrayState => {
+            return prevArrayState.map( prevDiceState => {
+                return prevDiceState.id === currentId ? {...prevDiceState, isHeld: !prevDiceState.isHeld} : prevDiceState
+            })
+        })
+    }
+
     return (
         <main>
             <div className="game-border">
@@ -31,6 +40,7 @@ export default function App() {
                     <Die 
                         diesNb={diceValues}
                         newNb= {newRoll}
+                        locking={isLocking}
                     />
                 </div>
             </div>

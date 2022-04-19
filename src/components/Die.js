@@ -1,11 +1,18 @@
 import React from "react";
 
-export default function Die({diesNb, newNb}) {
-
+export default function Die({diesNb, newNb, locking}) {
     const diesServ = () => {
         const diesElementsArray = []
         for (let i = 0; i < diesNb.length; i++) {
-            diesElementsArray.push(<div key={i} id={i + 1} className="die"><p>{diesNb[i]}</p></div>)
+            diesElementsArray.push(
+                <div 
+                    onClick={() => locking(diesNb[i].id)}
+                    key={i} 
+                    id={diesNb.id} 
+                    className={diesNb[i].isHeld ? "die isLock" : "die"}>
+                        <p>{diesNb[i].value}</p>
+                </div>
+            )
         }
         return diesElementsArray
     }
