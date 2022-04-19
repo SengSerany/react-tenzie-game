@@ -5,30 +5,29 @@ import Die from "./components/Die";
 export default function App() {
 
     const randomNumber = () => {
-         return Math.floor(Math.random() * 10);
+         return Math.floor(Math.random() * 6) + 1;
     }
 
-    const diesValue = [
-        randomNumber(),
-        randomNumber(),
-        randomNumber(),
-        randomNumber(),
-        randomNumber(),
-        randomNumber(),
-        randomNumber(),
-        randomNumber(),
-        randomNumber(),
-        randomNumber()
-    ]
+    const diesValue = () =>{
+        const valueNb = 10;
+        const arrayDiesValue = []
+        for (let i = 0; i < valueNb ; i++) {
+            arrayDiesValue.push(randomNumber())
+        }
+        return arrayDiesValue;
+    }
 
-    console.log(diesValue)
+    const [ diceValues, setDiceValues] = React.useState(diesValue())
 
     return (
         <main>
             <div className="game-border">
                 <div className="game-board">
                     <Header />
-                    <Die diesNb={diesValue}/>
+                    <Die 
+                        diesNb={diceValues}
+                        newNb= {setDiceValues}
+                    />
                 </div>
             </div>
         </main>
