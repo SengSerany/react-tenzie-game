@@ -19,6 +19,10 @@ export default function App() {
 
     const [ diceValues, setDiceValues] = React.useState(diesValue())
 
+    const newRoll = () => {
+        return setDiceValues(diesValue())
+    }
+
     return (
         <main>
             <div className="game-border">
@@ -26,7 +30,7 @@ export default function App() {
                     <Header />
                     <Die 
                         diesNb={diceValues}
-                        newNb= {setDiceValues}
+                        newNb= {newRoll}
                     />
                 </div>
             </div>

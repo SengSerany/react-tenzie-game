@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Die({diesNb}) {
+export default function Die({diesNb, newNb}) {
 
     const diesServ = () => {
         const diesElementsArray = []
@@ -15,7 +15,7 @@ export default function Die({diesNb}) {
             <div className="dies">
                 {diesServ()}
             </div>
-            <button type="button" className="roll-btn">Roll</button>
+            <button type="button" className="roll-btn" onClick={newNb}>Roll</button>
         </div>
     )
 }
