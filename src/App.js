@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./components/Header";
 import Die from "./components/Die";
+import { nanoid } from "nanoid";
 
 export default function App() {
 
@@ -11,17 +12,20 @@ export default function App() {
     const diesValue = () =>{
         const valueNb = 10;
         const arrayDiesValue = []
-        const count = 0;
         for (let i = 0; i < valueNb ; i++) {
-            arrayDiesValue.push({value: randomNumber(), isHeld: false, id: count + i})
+            arrayDiesValue.push({value: randomNumber(), isHeld: false, id: nanoid()})
         }
         return arrayDiesValue;
     }
 
     const [ diceValues, setDiceValues] = React.useState(diesValue())
-
+    console.log(diceValues)
     const newRoll = () => {
-        return setDiceValues(diesValue())
+        setDiceValues(prevDices => {
+            return prevDices.map( prevDice => {
+                return prevDice.isHeld ? prevDice : {...prevDice, value: randomNumber()}
+            })
+        })
     }
 
     const isLocking = (currentId) => {
@@ -31,6 +35,7 @@ export default function App() {
             })
         })
     }
+
 
     return (
         <main>
