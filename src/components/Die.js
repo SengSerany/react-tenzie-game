@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Die({diesNb, newNb, locking}) {
+export default function Die({diesNb, newNb, locking, isTenzies}) {
     const diesServ = () => {
         const diesElementsArray = []
         for (let i = 0; i < diesNb.length; i++) {
@@ -22,7 +22,7 @@ export default function Die({diesNb, newNb, locking}) {
             <div className="dies">
                 {diesServ()}
             </div>
-            <button type="button" className="roll-btn" onClick={newNb}>Roll</button>
+            <button type="button" className="roll-btn" onClick={newNb}>{isTenzies ? "Restart" : "Roll"}</button>
         </div>
     )
 }

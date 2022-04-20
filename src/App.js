@@ -19,13 +19,21 @@ export default function App() {
     }
 
     const [ diceValues, setDiceValues] = React.useState(diesValue())
-    console.log(diceValues)
+    const [ tenzies, setTenzies] = React.useState(false)
+
+
     const newRoll = () => {
-        setDiceValues(prevDices => {
-            return prevDices.map( prevDice => {
-                return prevDice.isHeld ? prevDice : {...prevDice, value: randomNumber()}
+        if (!tenzies) {
+            setDiceValues(prevDices => {
+                return prevDices.map( prevDice => {
+                    return prevDice.isHeld ? prevDice : {...prevDice, value: randomNumber()}
+                })
             })
-        })
+        } else if (tenzies) {
+            setTenzies(false)
+            setDiceValues(diesValue())
+        }
+        
     }
 
     const isLocking = (currentId) => {
@@ -36,7 +44,25 @@ export default function App() {
         })
     }
 
+    React.useEffect(() => {
 
+        let yesCount = 0;
+        let valueArray = []
+
+        diceValues.map( dice => {
+            return dice.isHeld && valueArray.push(dice.value)
+        })
+        
+        if (valueArray.length === 10){
+            for (let i = 0; i < 10; i++) {
+                if (valueArray[0] === valueArray[i]) {
+                    yesCount = yesCount + 1;
+                } 
+            }
+        setTenzies(true)
+        }
+    }, [diceValues])
+    
     return (
         <main>
             <div className="game-border">
@@ -46,6 +72,7 @@ export default function App() {
                         diesNb={diceValues}
                         newNb= {newRoll}
                         locking={isLocking}
+                        isTenzies={tenzies}
                     />
                 </div>
             </div>
